@@ -1,4 +1,4 @@
-.loader-screen {
+/* .loader-screen {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,4 +11,139 @@
   align-items: center;
   font-size: 2.5rem;
   z-index: 9999;
+} */
+/* src/components/Loader.css */
+.loader-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+  z-index: 9999;
+  transition: opacity 2s ease;
 }
+
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader-counter {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+.loader-text h1 {
+  font-size: 2.8rem;
+  margin: 8px 0;
+  opacity: 1;
+  animation: fadeInUp 0.8s ease both;
+}
+
+.loader-footer {
+  margin-top: 30px;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* src/components/Loader.css */
+.loader-screen {
+  position: fixed;
+  inset: 0;
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+  z-index: 9999;
+  transition: opacity 2s ease;
+}
+
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader-counter {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+.loader-text h1 {
+  font-size: 2.8rem;
+  margin: 8px 0;
+  animation: fadeInUp 0.8s ease both;
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+.loader-footer {
+  margin-top: 30px;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Add this in Loader.css */
+
+.now-blink {
+  display: inline-block;
+  animation: blinkNow 1s infinite;
+  color: white;
+}
+
+@keyframes blinkNow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
