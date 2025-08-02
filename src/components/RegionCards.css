@@ -1,4 +1,4 @@
-/* .region-title {
+/* /* .region-title {
   text-align: center;
   font-size: 2.5rem;
   font-weight: bold;
@@ -59,6 +59,85 @@
   font-size: 1.2rem;
   font-weight: bold;
 }
+
+.region-section {
+  background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%);
+  background-attachment: fixed;}   /* Keeps background static on scroll */
+  /* background-repeat: no-repeat;
+  background-size: cover;
+  padding: 1rem 2rem;
+  min-height: 100vh;              /* Covers full screen height */
+ 
+.region-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 4rem;
+  margin-top: 7rem;
+  color: #e0c435;
+  font-family: 'Georgia', serif;
+}
+
+.region-card-container {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.region-card {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 6rem;
+  height: 400px;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.region-card:hover {
+  transform: scale(1.05);
+}
+
+.region-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.region-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+.region-card:hover .region-overlay {
+  opacity: 1;
+}
+
+.region-text {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.region-section {
+  background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%);
+  background-attachment: fixed;   /* Keeps background static on scroll */
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 1rem 2rem;
+  min-height: 100vh;              /* Covers full screen height */
+}
 .region-header {
   display: flex;
   align-items: flex-start; /* aligns top edge of images and text */
@@ -95,4 +174,18 @@
 /* Flip the left one */
 .side-icon-left {
   transform: scaleX(-1);
+}
+
+
+/* ✅ Responsive additions only */
+@media (max-width: 768px) {
+  .region-card {
+    max-width: 45%;
+  }
+}
+
+@media (max-width: 480px) {
+  .region-card {
+    max-width: 100%;
+  }
 }
