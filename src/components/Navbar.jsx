@@ -1,111 +1,117 @@
-// import React, { useState } from "react";
-// import "../styles.css";
-
-// const Navbar = () => {
-//   const [menuActive, setMenuActive] = useState(false);
-
-//   const toggleMenu = () => {
-//     setMenuActive(!menuActive);
-//   };
-
-//   return (
-//     <nav className="navbar">
-//       <h1>Tourism</h1>
-
-//       {/* Hamburger button */}
-//       <div className="menu-toggle" onClick={toggleMenu} aria-label="Toggle menu" role="button" tabIndex={0} onKeyPress={e => { if (e.key === 'Enter') toggleMenu(); }}>
-//         <span></span>
-//         <span></span>
-//         <span></span>
-//       </div>
-
-//       <ul className={menuActive ? "active" : ""}>
-//         <li><a href="#home" onClick={() => setMenuActive(false)}>Home</a></li>
-//         <li><a href="#destinations" onClick={() => setMenuActive(false)}>Destinations</a></li>
-//         <li><a href="#packages" onClick={() => setMenuActive(false)}>Packages</a></li>
-//         <li><a href="#contact" onClick={() => setMenuActive(false)}>Contact</a></li>
-//       </ul>
-//     </nav>
-//   );
-// };
-
-// export default Navbar;
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import "../styles.css";
+import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
-  const [menuActive, setMenuActive] = useState(false);
-  const location = useLocation();
+export default function Navbar() {
+  const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setMenuActive(!menuActive);
-  };
+  const navLinks = [
+    { label: "Home", url: "/" },
+    { label: "Image Gallery", url: "/gallery" },
+    { label: "Destinations", url: "/europe" },
+    { label: "Team", url: "/team" },
+    { label: "Feedback", url: "/contact" },
+    { label: "                                                                          .....         ", url: "/asia" },
+  ];
 
-  // Helper: Scroll to section if on homepage
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) element.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handleNavClick = (e, id) => {
-    e.preventDefault();
-    if (location.pathname === "/") {
-      scrollToSection(id);
-    } else {
-      window.location.href = `/#${id}`; // fallback if not on homepage
-    }
-    setMenuActive(false);
+  const handleNavigation = (url) => {
+    navigate(url);
   };
 
   return (
-    <nav className="navbar">
-      <h1>Tourism</h1>
-
+    <nav
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        display: "flex",
+        alignItems: "center",
+        padding: "0.75rem 1.5rem",
+        color: "white",
+        zIndex: 10000,
+        fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+        backdropFilter: "blur(10px)",
+        background: "rgba(0, 0, 0, 0.1)",
+        boxShadow: "0 4px 15px rgba(0,0,0,0.4)",
+      }}
+    >
       <div
-        className="menu-toggle"
-        onClick={toggleMenu}
-        aria-label="Toggle menu"
-        role="button"
-        tabIndex={0}
-        onKeyPress={(e) => {
-          if (e.key === "Enter") toggleMenu();
+        onClick={() => setMenuOpen(!menuOpen)}
+        className="hamburger"
+        style={{
+          fontSize: "1.8rem",
+          cursor: "pointer",
+          display: "none", // Set to "block" if using hamburger on small screens
+          color: "white",
+          marginLeft: "1rem",
         }}
       >
-        <span></span>
-        <span></span>
-        <span></span>
+        ☰
       </div>
 
-      <ul className={menuActive ? "active" : ""}>
-        <li>
-          <a href="#home" onClick={(e) => handleNavClick(e, "home")}>
-            Home
-          </a>
-        </li>
-        <li>
-          <a href="#destinations" onClick={(e) => handleNavClick(e, "destinations")}>
-            Destinations
-          </a>
-        </li>
-        <li>
-          <a href="#packages" onClick={(e) => handleNavClick(e, "packages")}>
-            Packages
-          </a>
-        </li>
-        <li>
-          <Link to="/gallery" onClick={() => setMenuActive(false)}>
-            Gallery
-          </Link>
-        </li>
-        <li>
-          <Link to="/contact" onClick={() => setMenuActive(false)}>
-            Contact
-          </Link>
-        </li>
-      </ul>
+      <div
+        onClick={() => handleNavigation("/")}
+        style={{
+          fontWeight: "bold",
+          fontSize: "1.5rem",
+          cursor: "pointer",
+          color: "#ffffff",
+          textShadow: "0 0 4px #00bfff",
+        }}
+      >
+        Tourism Explorer
+      </div>
+
+      {(menuOpen || window.innerWidth > 768) && (
+        <div
+          className="nav-links"
+          style={{
+            display: "flex",
+            flexDirection: window.innerWidth <= 768 ? "column" : "row",
+            position: window.innerWidth <= 768 ? "fixed" : "static",
+            top: "56px",
+            right: window.innerWidth <= 768 ? "0" : undefined,
+            background: window.innerWidth <= 768 ? "rgba(0,0,0,0.9)" : "transparent",
+            width: window.innerWidth <= 768 ? "220px" : "auto",
+            padding: window.innerWidth <= 768 ? "1rem" : "0",
+            borderRadius: window.innerWidth <= 768 ? "0 0 0 8px" : "0",
+            boxShadow: window.innerWidth <= 768 ? "0 4px 12px rgba(0,0,0,0.7)" : "none",
+            zIndex: 9999,
+            gap: "1.5rem",
+            fontWeight: "600",
+            marginLeft: window.innerWidth > 768 ? "auto" : undefined,
+          }}
+        >
+          {navLinks.map(({ label, url }) => (
+            <a
+              key={label}
+              href={url}
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavigation(url);
+              }}
+              style={{
+                color: "white",
+                textDecoration: "none",
+                padding: "0.75rem 0",
+                fontSize: window.innerWidth <= 768 ? "1.1rem" : "inherit",
+                transition: "transform 0.2s ease, text-shadow 0.3s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "scale(1.1)";
+                e.currentTarget.style.textShadow = "0 0 8px #00bfff";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+                e.currentTarget.style.textShadow = "none";
+              }}
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+      )}
     </nav>
   );
-};
-
-export default Navbar;
+}
