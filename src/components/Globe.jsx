@@ -62,10 +62,10 @@ const handleGlobeClick = () => {
 
   const navLinks = [
     { label: "Home", url: "/" },
-    { label: "Image Gallery", url: "/north-america" },
+    { label: "Image Gallery", url: "/gallery" },
     { label: "Destinations", url: "/europe" },
-     { label: "Team", url: "/team" },
-    { label: "Feedback", url: "/asia" },
+    { label: "Team", url: "/team" },
+    { label: "Feedback", url: "/contact" },
     { label: "                                                                          .....         ", url: "/asia" },
   ];
 
@@ -305,6 +305,7 @@ const handleGlobeClick = () => {
                 imageUrl="/plane.png"
                 onComplete={() => {
                   setTimeout(() => {
+                    document.body.style.overflow = "auto";
                     navigate(animationData.url);
                     setAnimationData(null);
                   }, 300);

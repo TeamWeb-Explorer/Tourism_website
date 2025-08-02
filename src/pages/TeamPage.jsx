@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./TeamPage.css";
+import Navbar from "../components/Navbar";
 
 const team = [
   { name: "Shravani S Naik", image: "/stars.jpg" },
@@ -67,56 +68,56 @@ export default function TeamPage() {
   }, []);
 
   return (
-    <div className="team-page-layout">
-      {/* Ripple background container */}
-      <div className="ripple-background">
-        {ripples.map(({ id, x, y }) => (
-          <div
-            key={id}
-            className="ripple"
-            style={{ top: `${y}%`, left: `${x}%` }}
-          />
-        ))}
-      </div>
-
-      {/* Left stacked text animation */}
-      <div className="left-stacked-text">
-        {Array.from({ length: stackedText.length }, (_, i) => {
-          const isVisible = i < revealedLines && i >= removedLines;
-          return (
+    <>
+      <Navbar />
+      <div className="team-page-layout">
+        {/* Ripple background container */}
+        <div className="ripple-background">
+          {ripples.map(({ id, x, y }) => (
             <div
-              key={i}
-              className={`stack-line ${isVisible ? "visible" : ""}`}
-              data-index={i}
-            >
-              {isVisible ? stackedText.slice(0, i + 1) : ""}
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Right team section with fade + slide up animation */}
-      <div className="right-team-section">
-        <h2 className="team-title">Meet Our Team</h2>
-        <div className="team-grid">
-          {team.map((member, index) => (
-            <div
-              className="team-bar"
-              key={index}
-              style={{ "--delay": `${index * 0.3}s` }}
-            >
-              <div className="left-text">{member.name}</div>
-
-              <div className="center-img">
-                <img src={member.image} alt={member.name} />
-                <div className="name-overlay">{member.name}</div>
-              </div>
-
-              <div className="right-text">Full Stack Developer</div>
-            </div>
+              key={id}
+              className="ripple"
+              style={{ top: `${y}%`, left: `${x}%` }}
+            />
           ))}
         </div>
+
+        {/* Left stacked text animation */}
+        <div className="left-stacked-text">
+          {Array.from({ length: stackedText.length }, (_, i) => {
+            const isVisible = i < revealedLines && i >= removedLines;
+            return (
+              <div
+                key={i}
+                className={`stack-line ${isVisible ? "visible" : ""}`}
+              >
+                {isVisible ? stackedText.slice(0, i + 1) : ""}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Right team section with fade + slide up animation */}
+        <div className="right-team-section">
+          <h2 className="team-title">Meet Our Team</h2>
+          <div className="team-grid">
+            {team.map((member, index) => (
+              <div
+                className="team-bar"
+                key={index}
+                style={{ animationDelay: `${index * 0.3}s` }}
+              >
+                <div className="left-text">{member.name}</div>
+                <div className="center-img">
+                  <img src={member.image} alt={member.name} />
+                  <div className="name-overlay">{member.name}</div>
+                </div>
+                <div className="right-text">Full Stack Developer</div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
