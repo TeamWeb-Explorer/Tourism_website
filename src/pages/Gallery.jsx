@@ -4,6 +4,8 @@ import React from 'react';
 import GallerySection from '../components/GallerySection';
 import { Link } from 'react-router-dom';
 import RegionCards from '../components/RegionCards';
+import Navbar from '../components/Navbar';
+
 
 
 
@@ -104,7 +106,7 @@ const Gallery = () => {
   ];
   return (
     <>
-   
+   <Navbar />
 
       <RegionCards />
 
@@ -156,6 +158,7 @@ const Gallery = () => {
         />
       </div>
     </>
+    
   );
 };
 

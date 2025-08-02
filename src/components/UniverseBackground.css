@@ -1,0 +1,30 @@
+/* src/components/UniverseBackground.css */
+.universe-bg {
+  background: rgb(247, 3, 3);
+  overflow: hidden;
+}
+
+.universe-bg::before, .universe-bg::after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: transparent url('https://raw.githubusercontent.com/Klerith/assets/main/stars.png') repeat;
+  animation: moveStars 100s linear infinite;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.universe-bg::after {
+  animation-duration: 150s;
+  opacity: 0.3;
+}
+
+@keyframes moveStars {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-100px, -200px);
+  }
+}

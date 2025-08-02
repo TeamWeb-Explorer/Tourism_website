@@ -1,14 +1,27 @@
+// src/App.jsx
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import GlobeComponent from "./components/Globe";
+import ContinentGallery from "./pages/ContinentGallery";
+import Gallery from "./pages/Gallery";
+import FeedbackContact from "./pages/FeedbackContact"; // Add this at the top
 
 
-import React from 'react';
-import Gallery from './pages/Gallery';
-import './index.css';
 
 function App() {
   return (
-    <div className="App">
-      <Gallery />
-    </div>
+    <Routes>
+      <Route path="/" element={<GlobeComponent />} />
+      <Route path="/north-america" element={<ContinentGallery continent="north-america" />} />
+      <Route path="/south-america" element={<ContinentGallery continent="south-america" />} />
+      <Route path="/europe" element={<ContinentGallery continent="europe" />} />
+      <Route path="/africa" element={<ContinentGallery continent="africa" />} />
+      <Route path="/asia" element={<ContinentGallery continent="asia" />} />
+      <Route path="/australia" element={<ContinentGallery continent="australia" />} />
+      <Route path="/antarctica" element={<ContinentGallery continent="antarctica" />} />
+      <Route path="/gallery" element={<Gallery />} /> {/* Optional route for your Indian gallery */}
+      <Route path="/contact" element={<FeedbackContact />} />
+    </Routes>
   );
 }
 
