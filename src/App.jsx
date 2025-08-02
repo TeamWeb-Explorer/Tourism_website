@@ -9,20 +9,32 @@ import FeedbackContact from "./pages/FeedbackContact"; // Add this at the top
 import TeamPage from "./pages/TeamPage";
 import Loader from "./components/Loader";
 
+// function App() {
+//   const [loading, setLoading] = useState(true);
+
+//   useEffect(() => {
+//     const timer = setTimeout(() => {
+//       setLoading(false);
+//     }, 10000); // 10 seconds
+
+//     return () => clearTimeout(timer);
+//   }, []);
+
+//   if (loading) {
+//     return <Loader />;
+//   }
 function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 10000); // 10 seconds
+    }, 7000); // 10s loader + 2s fade
 
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading) {
-    return <Loader />;
-  }
+  if (loading) return <Loader />;
 
   return (
     <Routes>

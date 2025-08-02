@@ -1,4 +1,4 @@
-/* .region-title {
+/* /* .region-title {
   text-align: center;
   font-size: 2.5rem;
   font-weight: bold;
@@ -7,7 +7,7 @@
   color: #e0c435;
   font-family: 'Georgia', serif;
 
-}
+} */
 
 .region-card-container {
   display: flex;
@@ -62,7 +62,7 @@
 
 .region-section {
   background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%);
-  background-attachment: fixed;   /* Keeps background static on scroll */
+  background-attachment: fixed;}   /* Keeps background static on scroll */
   /* background-repeat: no-repeat;
   background-size: cover;
   padding: 1rem 2rem;
@@ -138,6 +138,44 @@
   padding: 1rem 2rem;
   min-height: 100vh;              /* Covers full screen height */
 }
+.region-header {
+  display: flex;
+  align-items: flex-start; /* aligns top edge of images and text */
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 6rem; /* creates space below Navbar */
+  position: relative;
+  z-index: 1;
+}
+
+/* Title centered among images */
+.region-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #e0c435;
+  font-family: 'Georgia', serif;
+  margin: 0;
+  padding-top: 0.5rem;
+  text-align: center;
+}
+
+/* Side images */
+.side-icon-right {
+  width: 200px;
+  height: auto;
+  margin-top: 5px; /* shift both images slightly lower */
+}
+.side-icon-left {
+  width: 200px;
+  height: auto;
+  margin-top: 5px; /* shift both images slightly lower */
+}
+
+/* Flip the left one */
+.side-icon-left {
+  transform: scaleX(-1);
+}
+
 
 /* ✅ Responsive additions only */
 @media (max-width: 768px) {
