@@ -19,7 +19,12 @@ const RegionCards = () => {
 
   return (
     <div>
-      <h2 className="region-title">Incredible India</h2>
+      <div className="region-header">
+  <img src="elephant.png" alt="Left" className="side-icon-left" />
+  <h2 className="region-title">Incredible India</h2>
+  <img src="elephant.png" alt="Right" className="side-icon-right" />
+</div>
+
       <div className="region-card-container">
         {regions.map((region) => (
           <div

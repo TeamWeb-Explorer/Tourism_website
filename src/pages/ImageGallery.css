@@ -130,3 +130,39 @@
   text-align: center;
   max-width: 90%;
 }
+.plane-container {
+  position: fixed;
+  bottom: 150px; /* ⬆ raise the plane from the bottom */
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 9999;
+  /* Remove debug background after confirming */
+  /* background-color: rgba(255, 0, 0, 0.2); */
+}
+
+.flying-plane {
+  position: absolute;
+  width: 200px;  /* ⬆ make the plane larger */
+  height: auto;
+  animation: flyRight 6s linear infinite;
+  /* Remove debug background */
+  /* background-color: yellow; */
+}
+
+
+/* Keyframes for flying left to right */
+@keyframes flyRight {
+  0% {
+    left: -100px; /* start outside left */
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(10deg); /* slight tilt */
+  }
+  100% {
+    left: 100vw; /* fully across the screen */
+    transform: rotate(0deg);
+  }
+}

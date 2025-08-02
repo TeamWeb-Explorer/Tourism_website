@@ -173,6 +173,9 @@ export default function Loader({ onFinish }) {
       {visibleLines >= 4 && (
         <p className="loader-footer">Please wait a few seconds.</p>
       )}
+      <div className={`rocket-wrapper ${fadeOut ? "takeoff" : "idle"}`}>
+  <img src="/rocket.png" alt="Rocket" className="rocket-image" />
+</div>
     </div>
   );
 }
