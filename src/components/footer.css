@@ -1,0 +1,71 @@
+.footer {
+  background-color: #080731;
+  color: #000;
+  padding: 4px 0; /* ↓ reduced padding for height */
+  text-align: center;
+  font-size: 13px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  border-top: 1px solid #474343; /* optional: gives visual separation */
+}
+
+.social-icons {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.social-icons i {
+  margin: 0 6px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.social-icons i:hover {
+  transform: scale(1.1);
+}
+
+.trustpilot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #00b67a;
+  gap: 4px;
+  font-size: 12px;
+}
+
+.stars {
+  display: flex;
+  color: #00b67a;
+}
+
+.star,
+.half-star {
+  margin-right: 1px;
+  font-size: 12px;
+}
+
+.half-star {
+  opacity: 0.5;
+}
+
+.rating-text {
+  color: rgb(238, 11, 11);
+  margin-left: 4px;
+  margin-right: 2px;
+  font-size: 12px;
+}
+
+.trustpilot-text {
+  color: #00b67a;
+  font-size: 12px;
+}
+
+.logo img {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  height: 20px;
+}

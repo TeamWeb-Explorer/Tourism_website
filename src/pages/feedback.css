@@ -301,7 +301,7 @@ textarea {
   height: 150px;
   background: rgba(255, 255, 255, 0.08); /* Subtle white ripple */
   border-radius: 50%;
-  animation: rippleEffect 2s ease-out forwards;
+  animation: rippleEffect 8s ease-out forwards;
   pointer-events: none;
 }
 

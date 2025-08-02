@@ -58,7 +58,7 @@
 
 .marquee-content {
   display: flex;
-  animation: marquee-scroll 30s linear infinite;
+  animation: marquee-scroll 5s linear infinite;
 }
 
 .marquee-content:hover {
