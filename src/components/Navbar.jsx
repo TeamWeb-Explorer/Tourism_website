@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Navbar() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
@@ -12,19 +13,18 @@ export default function Navbar() {
     { label: "Destinations", url: "/europe" },
     { label: "Team", url: "/team" },
     { label: "Feedback", url: "/contact" },
-    { label: "                                                                                              ", url: "/asia" },
+     { label: "                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ", url: "/contact" },
   ];
 
   const handleNavigation = (url) => {
     navigate(url);
-    if (isMobile) setMenuOpen(false); // Close menu on mobile after navigation
+    if (isMobile) setMenuOpen(false);
   };
 
-  // Track screen size
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
-      if (window.innerWidth > 768) setMenuOpen(false); // Reset on desktop
+      if (window.innerWidth > 768) setMenuOpen(false);
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -37,6 +37,7 @@ export default function Navbar() {
         top: 0,
         left: 0,
         width: "100%",
+        paddingRight: "20000rem", 
         display: "flex",
         alignItems: "center",
         padding: "0.75rem 1.5rem",
@@ -44,15 +45,12 @@ export default function Navbar() {
         zIndex: 10000,
         fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
         backdropFilter: "blur(10px)",
-       // background: "rgba(0, 0, 0, 0.1)",
         boxShadow: "0 4px 15px rgba(0,0,0,0.4)",
       }}
     >
-      {/* Hamburger for mobile */}
       {isMobile && (
         <div
           onClick={() => setMenuOpen(!menuOpen)}
-          className="hamburger"
           style={{
             fontSize: "1.8rem",
             cursor: "pointer",
@@ -65,7 +63,6 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* Logo */}
       <div
         onClick={() => handleNavigation("/")}
         style={{
@@ -79,10 +76,8 @@ export default function Navbar() {
         Tourism Explorer
       </div>
 
-      {/* Navigation links */}
       {(menuOpen || !isMobile) && (
         <div
-          className="nav-links"
           style={{
             display: "flex",
             flexDirection: isMobile ? "column" : "row",
@@ -100,33 +95,47 @@ export default function Navbar() {
             marginLeft: !isMobile ? "auto" : undefined,
           }}
         >
-          {navLinks.map(({ label, url }) => (
-            <a
-              key={label}
-              href={url}
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavigation(url);
-              }}
-              style={{
-                color: "white",
-                textDecoration: "none",
-                padding: "0.75rem 0",
-                fontSize: isMobile ? "1.1rem" : "inherit",
-                transition: "transform 0.2s ease, text-shadow 0.3s ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "scale(1.1)";
-                e.currentTarget.style.textShadow = "0 0 8px #00bfff";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "scale(1)";
-                e.currentTarget.style.textShadow = "none";
-              }}
-            >
-              {label}
-            </a>
-          ))}
+          {navLinks.map(({ label, url }) => {
+            const isActive = location.pathname === url;
+
+            return (
+              <a
+                key={label}
+                href={url}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavigation(url);
+                }}
+                style={{
+                  color: isActive ? "#00ffff" : "white",
+                  textDecoration: "none",
+                  padding: "0.75rem 0",
+                  fontSize: isMobile ? "1.1rem" : "inherit",
+                  fontWeight: isActive ? "700" : "600",
+                  transform: isActive ? "scale(1.1)" : "scale(1)",
+                  textShadow: isActive
+                    ? "0 0 8px #00ffff, 0 0 12px #00ffff"
+                    : "none",
+                  transition: "all 0.3s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "scale(1.1)";
+                  e.currentTarget.style.textShadow =
+                    "0 0 8px #00bfff, 0 0 12px #00bfff";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = isActive
+                    ? "scale(1.1)"
+                    : "scale(1)";
+                  e.currentTarget.style.textShadow = isActive
+                    ? "0 0 8px #00ffff, 0 0 12px #00ffff"
+                    : "none";
+                }}
+              >
+                {label}
+              </a>
+            );
+          })}
         </div>
       )}
     </nav>
