@@ -3,8 +3,8 @@ import "./TeamPage.css";
 import Navbar from "../components/Navbar";
 
 const team = [
-  { name: "Shravani S Naik", image: "/stars.jpg" },
-  { name: "Rakshita", image: "/stars.jpg" },
+  { name: "Shravani S Naik", image: "/avtar.png" },
+  { name: "Rakshita", image: "/avtar.png" },
 ];
 
 const stackedText = "WEBexplorer";

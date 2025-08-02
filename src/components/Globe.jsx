@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useTexture, Html } from "@react-three/drei";
 import Navbar from "../components/Navbar";
+import Footer from "./footer";
 
 export default function GlobeComponent() {
   const globeEl = useRef();
@@ -259,6 +260,8 @@ export default function GlobeComponent() {
           </Canvas>
         </div>
       )}
+     
+    
     </>
   );
 }
