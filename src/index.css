@@ -9,7 +9,13 @@ background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%);}
 
 .gallery-section {
   padding: 20px;
+  background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%);
+  background-attachment: fixed; /* Keeps background in place while scrolling */
+  background-repeat: no-repeat;
+  background-size: cover;       /* Ensures it fills the whole section */
+  min-height: 100vh;            /* Covers full screen height */
 }
+
 .gallery-description {
   text-align: center;
   font-size: 1.2rem;

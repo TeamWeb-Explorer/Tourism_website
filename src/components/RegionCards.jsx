@@ -19,6 +19,7 @@ const RegionCards = () => {
 
   return (
     <div>
+      <div class="region-section">
       <h2 className="region-title">Incredible India</h2>
       <div className="region-card-container">
         {regions.map((region) => (
@@ -33,6 +34,7 @@ const RegionCards = () => {
             </div>
           </div>
         ))}
+      </div>
       </div>
     </div>
   );

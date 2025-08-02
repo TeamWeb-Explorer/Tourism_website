@@ -205,7 +205,7 @@ const handleGlobeClick = () => {
         )}
       </nav>
 
-      <header
+      {/* <header
         style={{
           position: "fixed",
           top: "80px",
@@ -247,7 +247,60 @@ const handleGlobeClick = () => {
           it even breaks your heart. But that’s okay. The journey changes you; it should
           change you."
         </p>
-      </header>
+      </header> */}
+      <header
+  style={{
+    position: "fixed",
+    top: "80px",
+    width: "100%",
+    margin: "0 auto",
+    textAlign: "center",
+    color: "white",
+    zIndex: 10,
+    fontFamily: "'Raleway', sans-serif",
+    fontStyle: "italic",
+    userSelect: "none",
+    padding: "0 1rem",
+    textShadow: "2px 2px 6px rgba(0,0,0,0.7)",
+    left: 0,
+    right: 0,
+  }}
+>
+  <h1
+    style={{
+      margin: 0,
+      fontSize: "clamp(1.5rem, 5vw, 3rem)",
+      fontWeight: "700",
+      lineHeight: 1.2,
+    }}
+  >
+    Welcome to Your Next{" "}
+    <span
+      style={{
+        color: "#00bfff",
+        textShadow: "0 0 2px #00bfff, 0 0 5px #00bfff",
+      }}
+    >
+      Adventure!
+    </span>
+  </h1>
+  <p
+    style={{
+      marginTop: "0.6rem",
+      fontSize: "clamp(1rem, 2.5vw, 1.3rem)",
+      fontStyle: "italic",
+      lineHeight: 1.5,
+      maxWidth: "90%",
+      marginLeft: "auto",
+      marginRight: "auto",
+    }}
+  >
+    "Travel isn’t always pretty. It isn’t always comfortable. Sometimes it hurts,
+    it even breaks your heart. But that’s okay. The journey changes you; it should
+    change you."
+  </p>
+</header>
+
 
       <div
         style={{
