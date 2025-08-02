@@ -1,12 +1,71 @@
-# React + Vite
+🌍 Incredible India — An Interactive Tourism Website
+Welcome to Incredible India, a dynamic and immersive tourism website designed to showcase the beauty and diversity of India's destinations and culture. This website is built with modern web technologies and enriched with creative animations and interactive elements to elevate the user experience.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+📁 Project Structure – At a Glance
+Our website is built across five main pages, each carefully crafted to serve a unique purpose:
 
-Currently, two official plugins are available:
+🏠 Home Page
+Features a rotating 3D globe as our "mystery element", with animated yellow markers representing the seven continents.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Clicking on any marker navigates to that continent's dedicated destination section.
 
-## Expanding the ESLint configuration
+A custom animated background sets a captivating mood.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Includes:
+
+Infinite marquee effect that pauses on hover.
+
+Ripple animation when hovering over blank space.
+
+A loader animation is displayed on website load for a smooth user experience.
+
+🖼️ Image Gallery Page
+Showcases stunning images of famous Indian landmarks and tourist attractions.
+
+Built with an elegant image grid layout to present visuals in a clean and engaging way.
+
+👥 Team Page
+Displays details about the development team.
+
+Includes:
+
+Text animation effects for smooth transitions.
+
+A well-designed team section with member cards and interactive styling.
+
+📬 Contact Page
+Allows users to share feedback with us.
+
+Simple, clean form layout to ensure usability and accessibility.
+
+🗺️ Destinations Page
+Represents different continents and regions of India.
+
+Clicking a continent from the globe on the home page leads here.
+
+Enhanced with smooth scroll navigation and hover-responsive region cards.
+
+🌐 Responsive Design
+The entire website is fully responsive across all screen sizes — desktops, tablets, and mobiles.
+
+The navigation bar adapts beautifully to smaller screens with a mobile-friendly menu toggle.
+
+✨ Additional Features
+Custom CSS animations and transitions.
+
+Smooth scrolling navigation across pages.
+
+Accessible layout and components, keeping users in mind.
+
+Optimized image handling for faster loading times.
+
+⚙️ Technologies Used
+React.js — component-based UI framework
+
+CSS3 — for layout, styling, and animations
+
+Framer Motion — for page transitions and animations
+
+React Router — for navigation between pages
+
+Responsive Web Design (RWD) principles
