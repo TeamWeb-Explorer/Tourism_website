@@ -5,6 +5,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { useTexture, Html } from "@react-three/drei";
 import * as THREE from "three";
 
+
 export default function GlobeComponent() {
   const globeEl = useRef();
   const navigate = useNavigate();
@@ -63,7 +64,7 @@ const handleGlobeClick = () => {
     { label: "Home", url: "/" },
     { label: "Image Gallery", url: "/gallery" },
     { label: "Destinations", url: "/europe" },
-    { label: "Team", url: "/asia" },
+    { label: "Team", url: "/team" },
     { label: "Feedback", url: "/contact" },
     { label: "                                                                          .....         ", url: "/asia" },
   ];
