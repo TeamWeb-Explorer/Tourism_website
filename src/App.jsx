@@ -1,10 +1,25 @@
-// src/App.jsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import GlobeComponent from "./components/Globe";
 import ContinentGallery from "./pages/ContinentGallery";
+import TeamPage from "./pages/TeamPage";
+import Loader from "./components/Loader";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 10000); // 10 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <Routes>
       <Route path="/" element={<GlobeComponent />} />
@@ -15,6 +30,7 @@ function App() {
       <Route path="/asia" element={<ContinentGallery continent="asia" />} />
       <Route path="/australia" element={<ContinentGallery continent="australia" />} />
       <Route path="/antarctica" element={<ContinentGallery continent="antarctica" />} />
+      <Route path="/team" element={<TeamPage />} />
     </Routes>
   );
 }

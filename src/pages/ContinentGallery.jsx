@@ -1,6 +1,8 @@
 // src/pages/ContinentGallery.jsx
-import React from "react";
+// src/pages/ContinentGallery.jsx
+import React, { useEffect } from "react";
 import "./ImageGallery.css";
+
 
 const descriptions = {
   "north-america": [
@@ -83,13 +85,57 @@ const descriptions = {
 export default function ContinentGallery({ continent }) {
   const places = descriptions[continent] ?? [];
 
+  useEffect(() => {
+    const container = document.querySelector(".continent-gallery");
+    let lastRippleTime = 0;
+
+    const createRipple = (e) => {
+      const now = Date.now();
+      if (now - lastRippleTime < 300) return; // throttle
+      lastRippleTime = now;
+
+      const ripple = document.createElement("span");
+      ripple.classList.add("ripple");
+
+      const rect = container.getBoundingClientRect();
+      ripple.style.left = `${e.clientX - rect.left}px`;
+      ripple.style.top = `${e.clientY - rect.top}px`;
+
+      container.querySelector(".ripple-background").appendChild(ripple);
+
+      setTimeout(() => ripple.remove(), 800);
+    };
+
+    container.addEventListener("mousemove", createRipple);
+    return () => container.removeEventListener("mousemove", createRipple);
+  }, []);
+
   return (
     <div className="continent-gallery">
-      <h2 className="continent-title">{continent.replace("-", " ").toUpperCase()}</h2>
+      <div className="ripple-background"></div>
+
+    <h2
+  className="continent-title"
+  style={{
+    fontWeight: "bold",
+    fontSize: "3.5rem",
+    cursor: "default",
+    color: "#ffffff",
+    textShadow: "0 0 5px #00bfff",
+    textAlign: "center",
+    marginBottom: "1rem",
+    
+  }}
+>
+  {continent.replace("-", " ").toUpperCase()}
+</h2>
+
+
       <div className="marquee">
         <div className="marquee-content">
           {Array.from({ length: 10 }).map((_, i) => {
-            const [title, desc] = places[i] || [`Image ${i + 1}`, "Description coming soon"];
+            const [title, desc] =
+              places[i] || [`Image ${i + 1}`, "Description coming soon"];
             return (
               <div className="image-box" key={i}>
                 <img
@@ -106,6 +152,8 @@ export default function ContinentGallery({ continent }) {
           })}
         </div>
       </div>
+    
+
     </div>
   );
 }

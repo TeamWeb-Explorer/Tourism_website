@@ -1,75 +1,117 @@
 .continent-gallery {
-  padding: 80px 20px;
-  background: black;
-  color: white;
+  position: relative;
+  padding: 3rem 2rem;
+  overflow: hidden;
+  background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%);
+  min-height: 100vh;
+  z-index: 0;
+  cursor: default;
+}
+/* Ripple container */
+.ripple-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* below text but above background */
+  pointer-events: none;
+  overflow: hidden;
 }
 
+/* Ripple effect */
+.ripple {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple-animation 0.8s ease-out;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Title */
 .continent-title {
-  font-size: 2rem;
-  margin: 1rem 0;
+  font-size: 3rem;
+  font-weight: 800;
   text-align: center;
-  font-family: 'Raleway', sans-serif;
-  text-transform: uppercase;
-  text-shadow: 0 0 5px #00bfff;
+  margin-bottom: 2rem;
+  color: #2d2d2d;
+  position: relative;
+  z-index: 2;
 }
 
+/* Marquee */
 .marquee {
   overflow: hidden;
   white-space: nowrap;
   position: relative;
-  width: 100%;
+  z-index: 2;
 }
 
 .marquee-content {
   display: flex;
-  animation: scroll 30s linear infinite;
+  animation: marquee-scroll 30s linear infinite;
 }
 
-/* Pause marquee animation on hover */
 .marquee-content:hover {
   animation-play-state: paused;
 }
 
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Image Boxes */
 .image-box {
   position: relative;
   width: 300px;
-  height: 450px;
-  margin: 10px;
+  height: 300px;
+  margin: 0 1rem;
   flex-shrink: 0;
   overflow: hidden;
-  border-radius: 8px;
-  cursor: pointer;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .continent-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-  transition: transform 0.001s ease-in-out;
+  transition: transform 0.4s ease;
 }
 
 .image-box:hover .continent-image {
   transform: scale(1.05);
 }
 
+/* Overlay */
 .overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.6);
-  color: white;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
   opacity: 0;
-  transition: opacity 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
-  border-radius: 8px;
-  text-align: center;
+  transition: opacity 0.3s ease;
 }
 
 .image-box:hover .overlay {
@@ -78,16 +120,13 @@
 
 .overlay h4 {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 
 .overlay p {
-  margin-top: 5px;
-  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
   text-align: center;
-}
-
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+  max-width: 90%;
 }

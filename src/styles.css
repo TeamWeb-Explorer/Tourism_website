@@ -4,7 +4,8 @@ html, body, #root {
   padding: 0;
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y:auto;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: black;
   color: white;
