@@ -1,7 +1,13 @@
+
+
+import React from 'react';
+import Gallery from './pages/Gallery';
+import './index.css';
+
 function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center text-4xl font-bold text-blue-600">
-      Tailwind is working! 🚀
+    <div className="App">
+      <Gallery />
     </div>
   );
 }
